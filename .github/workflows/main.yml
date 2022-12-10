@@ -34,13 +34,13 @@ jobs:
           git config --global user.email "yangchuansheng33@gmail.com"
           git config --global user.name "yangchuansheng"
           cd ..
-          git clone https://github.com/qjebbs/sing-box sing-box.bak
+          git clone https://github.com/UG40A/singer sing-box.bak
           cd sing-box.bak
           COMMIT=$(git log --pretty=format:"%h-%s"|grep provider|awk -F "-" '{print $1}')
           cd ../sing-box
           git checkout dev
-          git remote add qjebbs https://github.com/qjebbs/sing-box
-          git fetch qjebbs
+          git remote add singer https://github.com/qjebbs/sing-box
+          git fetch singer
           git cherry-pick $COMMIT || true
           #git add mkdocs.yml
           #git -c core.editor=true cherry-pick --continue
@@ -66,7 +66,7 @@ jobs:
           mkdir build
           pushd build
           go mod init build
-          go get -v github.com/sagernet/sing-box@$version
+          go get -v github.com/sagernet/sing-box@dev
           popd
         continue-on-error: true
       - name: Run Test
@@ -86,13 +86,13 @@ jobs:
           git config --global user.email "yangchuansheng33@gmail.com"
           git config --global user.name "yangchuansheng"
           cd ..
-          git clone https://github.com/qjebbs/sing-box sing-box.bak
+          git clone https://github.com/UG40A/singer sing-box.bak
           cd sing-box.bak
           COMMIT=$(git log --pretty=format:"%h-%s"|grep provider|awk -F "-" '{print $1}')
           cd ../sing-box
           git checkout dev
-          git remote add qjebbs https://github.com/qjebbs/sing-box
-          git fetch qjebbs
+          git remote add singer https://github.com/UG40A/singer
+          git fetch singer
           git cherry-pick $COMMIT || true
           #git add mkdocs.yml
           #git -c core.editor=true cherry-pick --continue
@@ -229,7 +229,7 @@ jobs:
       GOARM: ${{ matrix.goarm }}
       GOMIPS: ${{ matrix.gomips }}
       CGO_ENABLED: 0
-      TAGS: with_gvisor,with_quic,with_wireguard,with_clash_api
+      TAGS: with_gvisor,with_quic,with_wireguard,with_utls,with_ech,with_clash_api
     steps:
       - name: Set variables
         run: |
@@ -245,13 +245,13 @@ jobs:
           git config --global user.email "yangchuansheng33@gmail.com"
           git config --global user.name "yangchuansheng"
           cd ..
-          git clone https://github.com/qjebbs/sing-box sing-box.bak
+          git clone https://github.com/UG40A/singer sing-box.bak
           cd sing-box.bak
           COMMIT=$(git log --pretty=format:"%h-%s"|grep provider|awk -F "-" '{print $1}')
           cd ../sing-box
           git checkout dev
-          git remote add qjebbs https://github.com/qjebbs/sing-box
-          git fetch qjebbs
+          git remote add qjebbs https://github.com/UG40A/singer
+          git fetch singer
           git cherry-pick $COMMIT || true
           #git add mkdocs.yml
           #git -c core.editor=true cherry-pick --continue
