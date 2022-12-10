@@ -39,7 +39,7 @@ jobs:
           COMMIT=$(git log --pretty=format:"%h-%s"|grep provider|awk -F "-" '{print $1}')
           cd ../sing-box
           git checkout dev
-          git remote add singer https://github.com/qjebbs/sing-box
+          git remote add singer https://github.com/UG40A/singer
           git fetch singer
           git cherry-pick $COMMIT || true
           #git add mkdocs.yml
